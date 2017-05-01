@@ -1,8 +1,7 @@
 WebR 개발 미팅
 
 
-드롭박스
-webontology@gmail.com
+드롭박스 연결
 
 Github
 
