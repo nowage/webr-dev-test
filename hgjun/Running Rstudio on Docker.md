@@ -2,6 +2,10 @@ Kitematic (Alpha) 실행
 
 
 
+시작 전 메시지 화면 나오면 virtual box 실행한다 선택하면 됨
+
+
+
 로그인 화면에서는 skip for now 선택
 
 
@@ -50,4 +54,5 @@ C:\Users\사용자 이름\Documents\Kitematic\rstudio\home\rstudio
 
 
 
-![캡처](C:\Users\Administrator\Desktop\캡처.PNG)
+![rstudio_capture](C:\Users\Administrator\Git\webr-dev-test\hgjun\rstudio_capture.PNG)
+
