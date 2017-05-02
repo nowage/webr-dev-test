@@ -54,4 +54,4 @@ C:\Users\사용자 이름\Documents\Kitematic\rstudio\home\rstudio
 
 
 
-![rstudio_capture](C:\Users\Administrator\Git\webr-dev-test\hgjun\rstudio_capture.gif)
+![rstudio_capture](https://github.com/nowage/webr-dev-test/blob/master/hgjun/rstudio_capture.gif)
