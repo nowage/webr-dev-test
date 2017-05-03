@@ -4,7 +4,7 @@ docker search rstudio
 ```
 
 
-**이미지 다운로드** 
+**rstudio 이미지 다운로드** 
 ```
 docker pull rocker/rstudio
 ```
@@ -28,7 +28,7 @@ rocker/rstudio
 ```
 
 
-**Volumn 바인딩**
+**volumn 바인딩**
 - 서버 위치는 /home/rstudio/kitematic
 - 서버와 연동할 폴더 만들어 두기
   (ex) c:Users/Administrator/Documents/Docker/home/rstudio/:/home/rstudio/kitematic 
@@ -41,7 +41,7 @@ rocker/rstudio
 ```
 
 
-**계정 Customize** 
+**계정 customize** 
 - 기본 계정은 rstudio/rstudio 임
 - 계정 바꾸고 싶으면 (ex) 아이디:ruser, 비밀번호:a123
 ```
@@ -55,7 +55,7 @@ rocker/rstudio
 
 
 **References**  
-<https://github.com/rocker-org/rocker/wiki/Using-the-RStudio-image>
+<https://github.com/rocker-org/rocker/wiki/Using-the-RStudio-image>  
 <http://statkclee.github.io/data-science/toolchain-docker-r.html>
 
 
