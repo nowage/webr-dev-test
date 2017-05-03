@@ -3,13 +3,13 @@ Docker run arguments
 
 Run a command in a new container
 
-**Usage**
+**Usage**  
 ```
 docker run [OPTIONS] IMAGE [COMMAND][ARG...]
 ```
 
 
-**Options**
+**Options**  
 | name            | shorthand | default | description                              |
 | :-------------- | :-------: | :-----: | :--------------------------------------- |
 | --add-host      |           |         | Add a custom host-to-IP mapping (host:ip) |
@@ -38,6 +38,6 @@ docker run [OPTIONS] IMAGE [COMMAND][ARG...]
 
 
 
-**References**
+**References**  
 <https://docs.docker.com/engine/reference/commandline/run/>
 <http://pyrasis.com/book/DockerForTheReallyImpatient/Chapter20/28/>
