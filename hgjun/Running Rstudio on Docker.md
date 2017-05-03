@@ -2,6 +2,10 @@ Kitematic (Alpha) 실행
 
 
 
+(Starting docker VM 메시지 뜸)
+
+
+
 시작 전 메시지 화면 나오면 virtual box 실행한다 선택하면 됨
 
 
