@@ -15,4 +15,7 @@ install.packages("shiny")
 
 - Shiny 웹앱 실행
   Run App 클릭
+  
+
+![rstudio_capture](https://github.com/nowage/webr-dev-test/blob/master/hgjun/webApp_helloWorld.gif)
 
