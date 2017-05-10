@@ -58,4 +58,4 @@ C:\Users\사용자 이름\Documents\Kitematic\rstudio
 
 
 
-![rstudio_capture](https://github.com/nowage/webr-dev-test/blob/master/hgjun/Docker containers - RStudio/rstudio_capture.gif)
+![rstudio_capture](https://github.com/nowage/webr-dev-test/blob/master/hgjun/Docker%20containers%20-%20RStudio/rstudio_capture.gif)
