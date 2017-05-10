@@ -18,4 +18,4 @@ Access URL: 192.168.99.100:32776  (매번 달라질 수 있음)
 
 위 access URL 을 브라우저에 입력 하면 shiny 연동한 폴더 웹에서 볼 수 있음
 
-![rstudio_capture](https://github.com/nowage/webr-dev-test/blob/master/hgjun/Docker%20containers%20-%20Shiny/shinyWebPage.gif)
+![rstudio_capture](https://github.com/nowage/webr-dev-test/blob/master/hgjun/Docker%20containers%20-%20Shiny/shinyWebPage.jpg)
