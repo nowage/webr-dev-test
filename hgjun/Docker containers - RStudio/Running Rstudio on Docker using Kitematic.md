@@ -52,7 +52,7 @@ plot(x, y)
 
 Kitematic 창에서 Settings > Volumns 에서 local folder 설정
 
-C:\Users\사용자 이름\Documents\Kitematic\rstudio\home\rstudio
+C:\Users\사용자 이름\Documents\Kitematic\rstudio
 
 로 설정하면, 위 연습 코드 저장하면 이곳에 파일 생김
 
