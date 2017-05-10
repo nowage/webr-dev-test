@@ -1,4 +1,4 @@
-**docker terminal 실행** 
+**docker terminal 실행**  
 Docker Quickstart Terminal 실행
 
 **rocker/shiny 실행** 
