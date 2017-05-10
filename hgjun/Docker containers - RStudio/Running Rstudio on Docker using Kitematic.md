@@ -26,7 +26,7 @@ create 완료 후, 나오는 정보
 
 Docker port: 8787/tcp
 
-Access URL: 192.168.99.100:32768
+Access URL: 192.168.99.100:32768 (매번 달라질 수 있음)
 
 
 
