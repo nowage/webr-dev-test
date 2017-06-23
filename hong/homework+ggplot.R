@@ -1,0 +1,126 @@
+if (interactive()){
+  
+  ### Call Package
+  library(shiny)
+  library(ggplot2)
+  library(datasets)
+  
+  ### ui
+  ui <- fluidPage(
+    titlePanel("Multiple Regression Analysis"),
+    
+    sidebarLayout(
+      # Sidebar
+      sidebarPanel(
+        radioButtons("dataset", "Select data", choices = c("mtcars","iris","acs","radial")),
+        selectInput("dv", "Response Variable(종속변수)", choices = c("")),                    # Dependent variable
+        selectInput("iv", "Explanatory Variable(s)(독립변수)", choices = c(""), multiple=T),  # Independent variable / 다중선택 기능
+        checkboxInput("lm.choose",label="linear fitting"),
+        checkboxInput("se.choose",label="linear fitting with se"),
+        actionButton("analysis", "Analysis")  # 실행버튼
+      ),
+      
+      # Main
+      mainPanel(
+        checkboxInput("check", "show data.table", F),
+        conditionalPanel(condition = "check == T", tableOutput("view") ),  # 체크 시 데이터시트 출력
+        verbatimTextOutput("modelsummary"),
+        uiOutput("plots")
+      )
+    )
+  )
+  
+  
+  ### server
+  server <-  shinyServer(function(input, output, session) {  # session을 사용하여, 데이터 수집 후 실행
+    
+    # Input Datasets
+    datasetInput <- reactive({
+      datasetInput=eval(parse(text=input$dataset))
+    })
+    
+    # Select Dependent Variable
+    observeEvent(input$dataset, {     # Run after selected datasets
+      updateSelectInput(session, "dv", choices = names(datasetInput()))  # Using updateSelectInput(session)
+    })
+    
+    # Select Independent Variable
+    observeEvent(input$dv, {          # dv가 입력되면 실행
+      updateSelectInput(session, "iv", choices = names(datasetInput()))
+    })
+    
+    # Show datasheet
+    output$view <- renderTable({
+      if(input$check == T){head(datasetInput())}
+    })
+    
+    
+    ## Regression Expression : result = y~x1+x2
+    # Simple Regression(Using Plotting)
+    regformula <-  reactive({
+      result = NULL               # result가 NULL이면 if문
+      if(length(input$iv)>0){     # 입력된 독립변수의 길이가 0보다 크면(변수가 입력되면)
+        result <- paste(input$dv, '~', paste0(input$iv)) # 식 생성해서 result에 저장
+      }
+    })
+    # Multiple Regression(Using Analysis)
+    regFormula <- reactive({
+      result = NULL
+      if(length(input$iv)>0){
+        result <- paste(input$dv, '~', paste(input$iv, collapse ='+'))
+      }
+    })
+    
+    # Show analysis result (Statistic Summary)
+    observeEvent( input$analysis, {  # analysis가 클릭되면 실행
+      output$modelsummary <- renderPrint({
+        regForm <- isolate(req(regFormula())) # analysis가 클릭 전까지는 수식 격리
+        model <- isolate(eval(parse(text=paste0("lm(", regForm, ", data=", input$dataset, ")")))) # 회귀분석 수식 텍스트화
+        summary(model) # 통계치 요약
+      })
+    })
+    
+    
+    ## Setting Plot
+    output$plots <- renderUI({
+      input$analysis # analysis가 클릭 전까지
+      regform <- isolate(req(regformula())) # 수식 격리
+      ds= datasetInput()
+      
+      for(i in 1:length(input$iv)){ # 입력된 독립변수의 개수만큼 반복
+        local({j=i
+        model <- isolate(eval(parse(text=paste0("lm(", input$dv, "~", input$iv[j], ", data=", input$dataset, ")"))))
+        
+        X <- ds[,input$iv[j]]
+        Y <- ds[,input$dv]
+        plot.data <- data.frame(X,Y)
+        
+        plotname <- paste0("plot", j)
+        output[[plotname]] <- renderPlot({
+          input$analysis
+          isolate({
+            pp <- ggplot(plot.data, aes(X, Y)) + geom_point() + labs(x=input$iv[j], y=input$dv)
+            
+            if(input$lm.choose){
+              pp <- pp + geom_smooth(method="lm", se=FALSE)
+            }
+            if(input$se.choose){
+              pp <- pp + geom_smooth(method="lm", se=TRUE)
+            }
+            print(pp)
+            })
+          })
+        })
+      }
+      
+      # Show Plot, respectively
+      plot_list <- lapply(1:length(input$iv), function(i) {
+        plotname <- paste0("plot", i)
+        plotOutput(plotname)
+      })
+    })
+  })
+
+  # Run App
+  shinyApp(ui, server)
+}      
